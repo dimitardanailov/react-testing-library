@@ -1,3 +1,5 @@
+// node --require ./global.js testin-framework.js
+
 const sum = (a, b) => a + b
 const subtract = (a, b) => a - b
 
@@ -12,23 +14,3 @@ test('subtract subtracts numbers', async () => {
 	const expected = 4
 	expect(result).toBe(expected)
 })
-
-async function test(title, callback) {
-	try {
-		await callback()
-		console.log(`✔ ${title}`)
-	} catch (e) {
-		console.error(`✕ ${title}`)
-    console.error(e)
-	}
-}
-
-function expect(actual) {
-	return {
-		toBe(expected) {
-			if (actual !== expected) {
-				throw new Error(`${actual} is not equal to ${expected}`)
-			}
-		} 
-	}
-}
